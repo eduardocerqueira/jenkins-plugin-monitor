@@ -2,11 +2,20 @@
 <j:jelly xmlns:j="jelly:core" xmlns:l="/lib/layout">
     <l:layout title="${it.displayName}" type="full-screen">
        <l:main-panel>
-           <l:pageHeader title="${null}"
-                         logoAlt="${null}"
-                         searchPlaceholder="${null}"
-                         searchHelpUrl="$null}"
-                         logout="${null}" />
+           <j:choose>
+               <j:when test="${it.logoUrl != null && !it.logoUrl.isEmpty()}">
+                   <div class="build-monitor-custom-header">
+                       <img src="${it.logoUrl}" alt="Custom Logo" class="build-monitor-logo" />
+                   </div>
+               </j:when>
+               <j:otherwise>
+                   <l:pageHeader title="${null}"
+                                 logoAlt="${null}"
+                                 searchPlaceholder="${null}"
+                                 searchHelpUrl="${null}"
+                                 logout="${null}" />
+               </j:otherwise>
+           </j:choose>
 
            <div id="app"
                 data-build-monitor-id="${it.displayName.hashCode()}"

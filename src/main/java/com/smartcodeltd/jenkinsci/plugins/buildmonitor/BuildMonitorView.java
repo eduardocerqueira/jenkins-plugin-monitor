@@ -44,6 +44,10 @@ import jenkins.model.Jenkins;
 import net.sf.json.JSONObject;
 import org.kohsuke.stapler.DataBoundConstructor;
 import org.kohsuke.stapler.DataBoundSetter;
+
+import javax.annotation.CheckForNull;
+import java.net.MalformedURLException;
+import java.net.URL;
 import org.kohsuke.stapler.StaplerRequest2;
 import org.kohsuke.stapler.WebMethod;
 
@@ -55,6 +59,22 @@ public class BuildMonitorView extends ListView {
     public static final BuildMonitorDescriptor descriptor = new BuildMonitorDescriptor();
 
     private String title;
+    private String logoUrl;
+
+    @edu.umd.cs.findbugs.annotations.CheckForNull
+    private String logoUrl;
+
+    @DataBoundSetter
+    public void setLogoUrl(@CheckForNull String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    @CheckForNull
+    public String getLogoUrl() {
+        return logoUrl;
+    }
+
+    private String logoUrl;
 
     /**
      * @param name  Name of the view to be displayed on the Views tab
@@ -293,6 +313,7 @@ public class BuildMonitorView extends ListView {
     }
 
     private Config config;
+    private String logoUrl;
 
     @Deprecated // use Config instead
     private Comparator<Job<?, ?>>
