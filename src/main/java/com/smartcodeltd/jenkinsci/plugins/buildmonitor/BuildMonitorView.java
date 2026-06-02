@@ -313,6 +313,7 @@ public class BuildMonitorView extends ListView {
     }
 
     private Config config;
+    private String logoUrl;
 
     @Deprecated // use Config instead
     private Comparator<Job<?, ?>>
