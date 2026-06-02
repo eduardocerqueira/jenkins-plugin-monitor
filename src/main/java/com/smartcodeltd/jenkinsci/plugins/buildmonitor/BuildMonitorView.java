@@ -59,6 +59,20 @@ public class BuildMonitorView extends ListView {
     public static final BuildMonitorDescriptor descriptor = new BuildMonitorDescriptor();
 
     private String title;
+    private String logoUrl;
+
+    @edu.umd.cs.findbugs.annotations.CheckForNull
+    private String logoUrl;
+
+    @DataBoundSetter
+    public void setLogoUrl(@CheckForNull String logoUrl) {
+        this.logoUrl = logoUrl;
+    }
+
+    @CheckForNull
+    public String getLogoUrl() {
+        return logoUrl;
+    }
 
     private String logoUrl;
 
